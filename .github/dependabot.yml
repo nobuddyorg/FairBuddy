@@ -1,7 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: "uv"
-    directory: "/services/add_item"
+    directory: "/services"
     schedule:
       interval: "weekly"
     groups:
