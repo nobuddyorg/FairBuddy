@@ -1,4 +1,5 @@
 from aws_lambda_powertools import Logger
+
 from .config import load_settings
 
 _logger = None

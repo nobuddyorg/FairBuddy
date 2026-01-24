@@ -26,6 +26,6 @@ To run all tests:
 
 ```bash
 uv sync --dev
-ruff check --fix
+uv run ruff check --fix
 uv run ruff format .
 ```
