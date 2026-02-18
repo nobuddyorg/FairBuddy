@@ -1,0 +1,15 @@
+{
+    "recommendations": [
+        "ms-python.python",
+        "ms-python.debugpy",
+        "charliermarsh.ruff",
+        "tamasfe.even-better-toml",
+        "redhat.vscode-yaml",
+        "github.vscode-github-actions",
+        "amazonwebservices.aws-toolkit-vscode",
+        "mhutchie.git-graph",
+        "timonwong.shellcheck",
+        "foxundermoon.shell-format",
+        "DavidAnson.vscode-markdownlint"
+    ]
+}
