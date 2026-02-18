@@ -5,6 +5,7 @@ set -euo pipefail
 tools=(
   awscli
   uv
+  pre-commit
 )
 
 ask() {
@@ -32,6 +33,11 @@ done
 if ask "Run aws configure now?"; then
   aws configure
 fi
+
+echo
+echo "Installing pre-commit hooks…"
+pre-commit install
+pre-commit install --hook-type commit-msg
 
 echo
 echo "Bootstrap finished."
