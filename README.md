@@ -8,15 +8,15 @@ In order install necessary dependencies, run:
 
 ## Pre-commit Hooks
 
-This project uses [pre-commit](https://pre-commit.com/) to enforce code quality before each commit.
+This project uses [prek](https://prek.j178.dev/) to enforce code quality before each commit.
 
 ### Setup
 
 The hooks are installed automatically by `boot.sh`. To install them manually:
 
 ```bash
-pre-commit install
-pre-commit install --hook-type commit-msg
+prek install
+prek install --hook-type commit-msg
 ```
 
 ### What Gets Checked
@@ -36,7 +36,7 @@ On every commit the following hooks run automatically:
 
 Commit messages must follow Conventional Commits:
 
-```
+```text
 feat: add delete_item service
 fix: correct DynamoDB table name
 docs: update README with setup instructions
