@@ -16,12 +16,14 @@ jobs:
         working-directory: services
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Install uv
         uses: astral-sh/setup-uv@v7
         with:
           enable-cache: true
+
+      - uses: j178/prek-action@v1
 
       - name: Install dependencies
         run: uv sync --dev
