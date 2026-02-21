@@ -14,6 +14,7 @@ repos:
       - id: detect-private-key
       - id: end-of-file-fixer
       - id: no-commit-to-branch
+      - id: mixed-line-ending
       - id: trailing-whitespace
 
   # Ruff linter and formatter
