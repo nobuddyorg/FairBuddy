@@ -11,6 +11,7 @@ tools=(
   awscli
   uv
   prek
+  pulumi/tap/pulumi
 )
 ############
 
