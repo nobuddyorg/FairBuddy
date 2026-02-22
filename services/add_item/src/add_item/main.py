@@ -14,6 +14,7 @@ dynamodb = boto3.client("dynamodb")
 def handler(event: dict[str, Any], context: Context) -> dict[str, object]:
     logger.info("start request_id=%s", getattr(context, "aws_request_id", "-"))
     logger.info("log_level=%s", settings.log_level)
+    logger.info("event=%s", event)
 
     try:
         resp = dynamodb.put_item(
