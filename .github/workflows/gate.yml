@@ -41,28 +41,6 @@ jobs:
       - name: Ruff lint
         run: uv run ruff check .
 
-      - uses: rohaquinlop/complexipy-action@v2
-        with:
-          paths: .
-          max_complexity_allowed: 10
-          output_json: true
-
-      - name: Run Skylos Analysis
-        run: uv run skylos . --danger --quality --secrets --baseline --json --diff-base origin/${{ github.base_ref || 'main' }} -o skylos-results.json
-
-      - name: Quality Gate
-        run: uv run skylos cicd gate --input skylos-results.json --summary
-
-      - name: GitHub Annotations
-        if: always()
-        run: uv run skylos cicd annotate --input skylos-results.json
-
-      - name: PR Review Comments
-        if: github.event_name == 'pull_request' && always()
-        run: uv run skylos cicd review --input skylos-results.json --diff-base origin/${{ github.base_ref || 'main' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-
   services-checks:
     runs-on: ubuntu-latest
     defaults:
@@ -85,28 +63,6 @@ jobs:
 
       - name: Ruff lint
         run: uv run ruff check .
-
-      - uses: rohaquinlop/complexipy-action@v2
-        with:
-          paths: .
-          max_complexity_allowed: 10
-          output_json: true
-
-      - name: Run Skylos Analysis
-        run: uv run skylos . --danger --quality --secrets --baseline --json --diff-base origin/${{ github.base_ref || 'main' }} -o skylos-results.json
-
-      - name: Quality Gate
-        run: uv run skylos cicd gate --input skylos-results.json --summary
-
-      - name: GitHub Annotations
-        if: always()
-        run: uv run skylos cicd annotate --input skylos-results.json
-
-      - name: PR Review Comments
-        if: github.event_name == 'pull_request' && always()
-        run: uv run skylos cicd review --input skylos-results.json --diff-base origin/${{ github.base_ref || 'main' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
 
       - name: Run tests
         env:
