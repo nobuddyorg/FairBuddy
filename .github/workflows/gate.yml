@@ -41,6 +41,12 @@ jobs:
       - name: Ruff lint
         run: uv run ruff check .
 
+      - uses: rohaquinlop/complexipy-action@v2
+        with:
+          paths: .
+          max_complexity_allowed: 10
+          output_json: true
+
   services-checks:
     runs-on: ubuntu-latest
     defaults:
@@ -63,6 +69,12 @@ jobs:
 
       - name: Ruff lint
         run: uv run ruff check .
+
+      - uses: rohaquinlop/complexipy-action@v2
+        with:
+          paths: .
+          max_complexity_allowed: 10
+          output_json: true
 
       - name: Run tests
         env:
