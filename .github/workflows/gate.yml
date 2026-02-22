@@ -18,7 +18,30 @@ jobs:
         env:
           SKIP: no-commit-to-branch
 
-  python-checks:
+  infrastructure-checks:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infrastructure
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync --dev
+
+      - name: Ruff format check
+        run: uv run ruff format . --check
+
+      - name: Ruff lint
+        run: uv run ruff check .
+
+  services-checks:
     runs-on: ubuntu-latest
     defaults:
       run:
