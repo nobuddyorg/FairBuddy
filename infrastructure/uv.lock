@@ -395,18 +395,26 @@ name = "fairbuddy"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "complexipy" },
     { name = "pulumi" },
     { name = "pulumi-aws" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "complexipy" },
     { name = "ruff" },
     { name = "skylos" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "complexipy", specifier = ">=5.2.0" },
     { name = "pulumi", specifier = ">=3.0.0,<4.0.0" },
     { name = "pulumi-aws", specifier = ">=7.0.0,<8.0.0" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "complexipy", specifier = ">=5.2.0" },
     { name = "ruff", specifier = ">=0.15.2" },
     { name = "skylos", specifier = ">=3.4.1" },
 ]
