@@ -1,4 +1,7 @@
+from typing import Any
+
 import boto3
+from aws_lambda_typing.context import Context
 from common.config import load_settings
 from common.logging import get_logger
 
@@ -8,9 +11,10 @@ settings = load_settings()
 dynamodb = boto3.client("dynamodb")
 
 
-def handler(event, context):
+def handler(event: dict[str, Any], context: Context) -> dict[str, object]:
     logger.info("start request_id=%s", getattr(context, "aws_request_id", "-"))
     logger.info("log_level=%s", settings.log_level)
+    logger.info("event=%s", event)
 
     try:
         resp = dynamodb.put_item(
@@ -32,7 +36,7 @@ def handler(event, context):
         raise
 
 
-def main():
+def main() -> dict[str, object]:
     class _LocalContext:
         aws_request_id = "local"
 
