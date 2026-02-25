@@ -1,3 +1,5 @@
+"""A Pulumi program that creates an AWS S3 hosted static website using a component."""
+
 import pulumi
 
 # Import from our new component module:

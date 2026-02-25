@@ -31,7 +31,7 @@ def test_handler_puts_item(monkeypatch):
 
 
 def test_handler_reraises_client_error(monkeypatch):
-    def put_item(**kwargs):
+    def put_item(**_):
         raise ClientError(
             {"Error": {"Code": "ValidationException", "Message": "boom"}},
             "PutItem",

@@ -1,3 +1,5 @@
+"""AWS Lambda function to add an item to a DynamoDB table."""
+
 from typing import Any
 
 import boto3
@@ -12,6 +14,7 @@ dynamodb = boto3.client("dynamodb")
 
 
 def handler(event: dict[str, Any], context: Context) -> dict[str, object]:
+    """Handle an AWS Lambda request to add an item to the DynamoDB table."""
     logger.info("start request_id=%s", getattr(context, "aws_request_id", "-"))
     logger.info("log_level=%s", settings.log_level)
     logger.info("event=%s", event)
@@ -24,19 +27,20 @@ def handler(event: dict[str, Any], context: Context) -> dict[str, object]:
                 "cost": {"N": "10"},
             },
         )
-
+    except Exception:
+        logger.exception("put_item failed")
+        raise
+    else:
         logger.info(
             "put_item ok consumed_capacity=%s",
             resp.get("ConsumedCapacity"),
         )
-
         return {"ok": True}
-    except Exception:
-        logger.exception("put_item failed")
-        raise
 
 
 def main() -> dict[str, object]:
+    """Run the handler locally (not used by AWS Lambda, but can be triggered with trigger.sh)."""
+
     class _LocalContext:
         aws_request_id = "local"
 

@@ -10,33 +10,24 @@ line-length = 120
 fix = true
 
 [tool.ruff.lint]
-select = [
-  "E", # pycodestyle errors (syntax & style issues)
-  "F", # pyflakes (undefined names, unused imports, etc.)
-  "I", # import sorting (replaces isort)
-
-  "B",   # flake8-bugbear (common mistakes and best practices)
-  "UP",  # pyupgrade (modernize to current Python version)
-  "SIM", # flake8-simplify (simplify overly complex logic)
-  "C90", # mccabe complexity checks
-
-  "N",   # pep8-naming (enforce naming conventions)
-  "ANN", # type annotation presence (warns if missing)
-  "PL",  # pylint-inspired design checks (arguments, branches, etc.)
-  "RUF", # Ruff-specific additional rules
-]
+select = ["ALL"]
 
 # Optional: Ignore rules that tend to create noise in real projects
 ignore = [
-  "PLR2004", # magic values
-  "E501",    # line length (handled by formatter)
+  "D203", # Conflicts with D211; Google style does NOT want a blank line before class docstrings
+  "D213", # Conflicts with D212; Google style wants the summary on the same line as opening quotes
 ]
 
 [tool.ruff.lint.mccabe]
 max-complexity = 10
 
 [tool.ruff.lint.per-file-ignores]
-"**/test_*.py" = ["ANN"]
+"**/test_*.py" = [
+  "ANN",    # Ignore annotation-enforcement rules in tests (type strictness usually adds noise here)
+  "D",      # Ignore all docstring rules in tests (tests are not public API)
+  "S101",   # Allow use of `assert` in pytest tests (normal and expected)
+  "INP001", # Allow tests to live outside explicit packages (no __init__.py required)
+]
 
 [tool.ruff.format]
 quote-style = "double"
