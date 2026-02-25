@@ -30,6 +30,7 @@ max-complexity = 10
   "D",      # Ignore all docstring rules in tests (tests are not public API)
   "S101",   # Allow use of `assert` in pytest tests (normal and expected)
   "INP001", # Allow tests to live outside explicit packages (no __init__.py required)
+  "TC002", # Allow test files to have more than one class (common pattern in pytest)
 ]
 
 [tool.ruff.format]

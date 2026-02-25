@@ -1,11 +1,9 @@
-from typing import TYPE_CHECKING, cast
+from typing import cast
 
 import add_item.main as m
 import pytest
+from aws_lambda_typing.context import Context
 from botocore.exceptions import ClientError
-
-if TYPE_CHECKING:
-    from aws_lambda_typing.context import Context
 
 
 class Ctx:
