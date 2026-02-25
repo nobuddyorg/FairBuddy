@@ -1,8 +1,5 @@
-from typing import cast
-
 import add_item.main as m
 import pytest
-from aws_lambda_typing.context import Context
 from botocore.exceptions import ClientError
 
 
@@ -23,7 +20,7 @@ def test_handler_puts_item(monkeypatch):
         type("Ddb", (), {"put_item": staticmethod(put_item)})(),
     )
 
-    res = m.handler({}, cast(Context, Ctx()))
+    res = m.handler({}, Ctx())
 
     assert res == {"ok": True}
     assert calls["kwargs"]["TableName"] == "fairbuddy_test"
@@ -47,4 +44,4 @@ def test_handler_reraises_client_error(monkeypatch):
     )
 
     with pytest.raises(ClientError):
-        m.handler({}, cast(Context, Ctx()))
+        m.handler({}, Ctx())

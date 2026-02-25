@@ -1,9 +1,8 @@
 """AWS Lambda function to add an item to a DynamoDB table."""
 
-from typing import Any, cast
+from typing import Any, Protocol
 
 import boto3
-from aws_lambda_typing.context import Context
 from common.config import load_settings
 from common.logging import get_logger
 
@@ -13,7 +12,13 @@ settings = load_settings()
 dynamodb = boto3.client("dynamodb")
 
 
-def handler(event: dict[str, Any], context: Context) -> dict[str, object]:
+class LambdaContext(Protocol):
+    """Protocol for the AWS Lambda context object."""
+
+    aws_request_id: str
+
+
+def handler(event: dict[str, Any], context: LambdaContext) -> dict[str, object]:
     """Handle an AWS Lambda request to add an item to the DynamoDB table."""
     logger.info("start request_id=%s", getattr(context, "aws_request_id", "-"))
     logger.info("log_level=%s", settings.log_level)
@@ -44,7 +49,7 @@ def main() -> dict[str, object]:
     class _LocalContext:
         aws_request_id = "local"
 
-    return handler({}, cast("Context", _LocalContext()))
+    return handler({}, _LocalContext())
 
 
 if __name__ == "__main__":
