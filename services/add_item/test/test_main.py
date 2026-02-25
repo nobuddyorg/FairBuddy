@@ -23,7 +23,7 @@ def test_handler_puts_item(monkeypatch):
         type("Ddb", (), {"put_item": staticmethod(put_item)})(),
     )
 
-    res = m.handler({}, cast("Context", Ctx()))
+    res = m.handler({}, cast(Context, Ctx()))
 
     assert res == {"ok": True}
     assert calls["kwargs"]["TableName"] == "fairbuddy_test"
@@ -47,4 +47,4 @@ def test_handler_reraises_client_error(monkeypatch):
     )
 
     with pytest.raises(ClientError):
-        m.handler({}, cast("Context", Ctx()))
+        m.handler({}, cast(Context, Ctx()))
