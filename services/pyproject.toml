@@ -2,10 +2,7 @@
 members = ["libs/common", "add_item"]
 
 [dependency-groups]
-dev = [
-    "ruff>=0.15.2",
-    "ty>=0.0.18",
-]
+dev = ["ruff>=0.15.2", "ty>=0.0.18"]
 
 [tool.ruff]
 target-version = "py313"
@@ -30,7 +27,7 @@ max-complexity = 10
   "D",      # Ignore all docstring rules in tests (tests are not public API)
   "S101",   # Allow use of `assert` in pytest tests (normal and expected)
   "INP001", # Allow tests to live outside explicit packages (no __init__.py required)
-  "TC002", # Allow test files to have more than one class (common pattern in pytest)
+  "TC002",  # Allow runtime third-party type imports in tests
 ]
 
 [tool.ruff.format]
