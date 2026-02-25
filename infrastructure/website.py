@@ -54,6 +54,9 @@ class AwsS3Website(pulumi.ComponentResource):
         )
 
         # Create an S3 Bucket object for each file; note the changes to name/source:
+        if files is None:
+            files = []
+
         for file in files:
             s3.BucketObject(
                 file,

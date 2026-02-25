@@ -2,7 +2,10 @@
 members = ["libs/common", "add_item"]
 
 [dependency-groups]
-dev = ["ruff>=0.15.2"]
+dev = [
+    "ruff>=0.15.2",
+    "ty>=0.0.18",
+]
 
 [tool.ruff]
 target-version = "py313"

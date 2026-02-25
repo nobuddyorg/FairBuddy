@@ -31,3 +31,21 @@ repos:
     hooks:
       - id: commitizen
         stages: [commit-msg]
+
+  - repo: local
+    hooks:
+      - id: ty-check-services
+        name: Ty (services)
+        entry: bash -lc 'cd services && uv run ty check'
+        language: system
+        pass_filenames: false
+        files: ^services/
+        stages: [pre-commit]
+
+      - id: ty-check-infrastructure
+        name: Ty (infrastructure)
+        entry: bash -lc 'cd infrastructure && uv run ty check'
+        language: system
+        pass_filenames: false
+        files: ^infrastructure/
+        stages: [pre-commit]

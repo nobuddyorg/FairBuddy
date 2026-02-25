@@ -1,6 +1,6 @@
 """AWS Lambda function to add an item to a DynamoDB table."""
 
-from typing import Any
+from typing import Any, cast
 
 import boto3
 from aws_lambda_typing.context import Context
@@ -44,7 +44,7 @@ def main() -> dict[str, object]:
     class _LocalContext:
         aws_request_id = "local"
 
-    return handler({}, _LocalContext())
+    return handler({}, cast("Context", _LocalContext()))
 
 
 if __name__ == "__main__":

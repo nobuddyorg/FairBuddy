@@ -41,6 +41,9 @@ jobs:
       - name: Ruff lint
         run: uv run ruff check .
 
+      - name: Ty check
+        run: uv run ty check
+
   services-checks:
     runs-on: ubuntu-latest
     defaults:
@@ -63,6 +66,9 @@ jobs:
 
       - name: Ruff lint
         run: uv run ruff check .
+
+      - name: Ty check
+        run: uv run ty check
 
       - name: Run tests
         env:
