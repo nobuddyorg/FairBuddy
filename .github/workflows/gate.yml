@@ -20,42 +20,13 @@ jobs:
         with:
           enable-cache: true
 
-      - name: Install dependencies (services)
-        run: cd services && uv sync --dev
-
-      - name: Install dependencies (infrastructure)
-        run: cd infrastructure && uv sync --dev
-
-      - uses: actions/checkout@v6
-      - uses: j178/prek-action@v1
-        env:
-          SKIP: no-commit-to-branch
-
-  infrastructure-checks:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: infrastructure
-
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v7
-        with:
-          enable-cache: true
-
       - name: Install dependencies
         run: uv sync --dev
 
-      - name: Ruff format check
-        run: uv run ruff format . --check
-
-      - name: Ruff lint
-        run: uv run ruff check .
-
-      - name: Ty check
-        run: uv run ty check
+      - name: Run Prek (pre-commit)
+        uses: j178/prek-action@v1
+        with:
+          extra_args: "--all-files"
 
   services-checks:
     runs-on: ubuntu-latest
@@ -73,15 +44,6 @@ jobs:
 
       - name: Install dependencies
         run: uv sync --dev
-
-      - name: Ruff format check
-        run: uv run ruff format . --check
-
-      - name: Ruff lint
-        run: uv run ruff check .
-
-      - name: Ty check
-        run: uv run ty check
 
       - name: Run tests
         env:
