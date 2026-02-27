@@ -69,18 +69,28 @@ repos:
     hooks:
       - id: typos
 
-  # Shellcheck for linting shell scripts. Additional configuration for shellcheck is found in `.shellcheckrc`.
+  # Shellcheck for linting shell scripts.
   - repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.11.0.1
     hooks:
       - id: shellcheck
 
-    # Custom local hook for Ty spell checking
+  # Custom local hook for Ty type checking checking.
   - repo: local
     hooks:
       - id: ty-check
         name: Ty
         entry: bash -lc 'uv run ty check'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+  # Custom local hook for cognitive complexity checking.
+  - repo: local
+    hooks:
+      - id: ty-check
+        name: Ty
+        entry: bash -lc 'uv run complexipy .'
         language: system
         pass_filenames: false
         stages: [pre-commit]
