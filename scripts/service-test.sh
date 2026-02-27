@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BOM_FILE="bom.txt"
+pushd "$(dirname "${BASH_SOURCE[0]}")/../services" > /dev/null
+
 RUN_ALL=false
 
 if [[ "${1:-}" == "--all" ]]; then
@@ -10,11 +11,13 @@ fi
 
 pkgs=()
 
-while IFS= read -r line; do
-  [[ -z "$line" ]] && continue
-  [[ "$line" =~ ^[[:space:]]*# ]] && continue
-  pkgs+=("$line")
-done < "$BOM_FILE"
+# Populate pkgs from ../services, excluding hidden dirs and libs/
+for dir in ./*/; do
+  dir="${dir%/}"
+  pkg="${dir##*/}"
+  [[ "$pkg" == .* || "$pkg" == "libs" ]] && continue
+  pkgs+=("$pkg")
+done
 
 uv sync --group dev
 
@@ -28,6 +31,7 @@ if $RUN_ALL; then
     echo
   done
 
+  popd > /dev/null
   exit 0
 fi
 
@@ -36,3 +40,5 @@ select pkg in "${pkgs[@]}"; do
   [[ -n "${pkg:-}" ]] || { echo "Invalid choice"; continue; }
   exec uv run --package "$pkg" pytest -q
 done
+
+popd > /dev/null

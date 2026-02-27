@@ -5,36 +5,4 @@ requires-python = ">=3.13"
 dependencies = ["pulumi>=3.0.0,<4.0.0", "pulumi-aws>=7.0.0,<8.0.0"]
 
 [dependency-groups]
-dev = [
-    "ruff>=0.15.2",
-    "ty>=0.0.18",
-]
-
-[tool.uv.workspace]
-members = ["libs/common", "add_item"]
-
-[tool.ruff]
-target-version = "py313"
-line-length = 120
-fix = true
-
-[tool.ruff.lint]
-select = [
-    "ALL"
-]
-
-# Optional: Ignore rules that tend to create noise in real projects
-ignore = [
-  "D203", # Conflicts with D211; Google style does NOT want a blank line before class docstrings
-  "D213", # Conflicts with D212; Google style wants the summary on the same line as opening quotes
-]
-
-[tool.ruff.lint.mccabe]
-max-complexity = 10
-
-[tool.ruff.lint.per-file-ignores]
-"**/test_*.py" = ["ANN"]
-
-[tool.ruff.format]
-quote-style = "double"
-indent-style = "space"
+dev = []
