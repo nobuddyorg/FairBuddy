@@ -32,9 +32,6 @@ jobs:
 
   services-checks:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: services
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
@@ -52,4 +49,4 @@ jobs:
       - name: Run tests
         env:
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-        run: ./test.sh --all
+        run: ./scripts/service-test.sh --all
