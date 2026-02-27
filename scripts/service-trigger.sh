@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-pushd "$(dirname "${BASH_SOURCE[0]}")/../services" > /dev/null
+pushd "$(dirname "${BASH_SOURCE[0]}")/../services" > /dev/null || exit
 
 pkgs=()
 
@@ -15,7 +15,7 @@ done
 
 if [[ ${#pkgs[@]} -eq 0 ]]; then
   echo "No services found in ../services"
-  popd > /dev/null
+  popd > /dev/null || exit
   exit 1
 fi
 
@@ -28,4 +28,4 @@ select pkg in "${pkgs[@]}"; do
   exec uv run --package "$pkg" python -m "${mod}.main"
 done
 
-popd > /dev/null
+popd > /dev/null || exit

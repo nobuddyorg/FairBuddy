@@ -9,14 +9,14 @@ This project uses **Pulumi** for Infrastructure as Code to provision, manage, an
 
 This setup simplifies cloud infrastructure management by automating deployment, updates, and teardown.
 
----
+______________________________________________________________________
 
 ## About Infrastructure as Code (IaC)
 
 **Infrastructure as Code (IaC)** is an approach to designing and managing infrastructure using code and software development practices instead of manual configurations. With IaC, infrastructure becomes versionable, repeatable, and testable, which improves consistency, reduces human error, and enables automation in deployment workflows. IaC is a fundamental part of DevOps practices and supports CI/CD pipelines, testing, reusable components, and auditability. Learn more about the concept here:
 👉 **What is Infrastructure as Code?** – Pulumi’s explanation of IaC principles and benefits [What is Infrastructure as Code? | Pulumi](https://www.pulumi.com/what-is/what-is-infrastructure-as-code/)
 
----
+______________________________________________________________________
 
 ## About Pulumi
 
@@ -26,4 +26,4 @@ This setup simplifies cloud infrastructure management by automating deployment, 
 For getting started with Pulumi itself:
 👉 **Pulumi Docs – What is Pulumi** – Intro to the Pulumi platform and how it works [What is Pulumi? | Pulumi Docs](https://www.pulumi.com/docs/iac/concepts/)
 
----
+______________________________________________________________________

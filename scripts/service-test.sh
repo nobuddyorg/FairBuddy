@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-pushd "$(dirname "${BASH_SOURCE[0]}")/../services" > /dev/null
+pushd "$(dirname "${BASH_SOURCE[0]}")/../services" > /dev/null || exit
 
 RUN_ALL=false
 
@@ -31,7 +31,7 @@ if $RUN_ALL; then
     echo
   done
 
-  popd > /dev/null
+  popd > /dev/null || exit
   exit 0
 fi
 
@@ -41,4 +41,4 @@ select pkg in "${pkgs[@]}"; do
   exec uv run --package "$pkg" pytest -q
 done
 
-popd > /dev/null
+popd > /dev/null || exit
