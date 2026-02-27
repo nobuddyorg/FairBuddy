@@ -74,3 +74,13 @@ repos:
     rev: v0.11.0.1
     hooks:
       - id: shellcheck
+
+    # Custom local hook for Ty spell checking
+  - repo: local
+    hooks:
+      - id: ty-check
+        name: Ty
+        entry: bash -lc 'uv run ty check'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
