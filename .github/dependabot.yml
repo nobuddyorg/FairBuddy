@@ -7,20 +7,7 @@ updates:
     cooldown:
       default-days: 7
   - package-ecosystem: "uv"
-    directory: "/services"
-    schedule:
-      interval: "weekly"
-    groups:
-      minor-and-patch:
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-          - "patch"
-    cooldown:
-      default-days: 7
-  - package-ecosystem: "uv"
-    directory: "/infrastructure"
+    directory: "/"
     schedule:
       interval: "weekly"
     groups:
