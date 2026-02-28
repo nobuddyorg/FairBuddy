@@ -51,4 +51,9 @@ if ask "Install pre-commit hooks?"; then
 fi
 
 echo
+if ask "Install project dependencies?"; then
+  uv sync
+fi
+
+echo
 echo "Bootstrap finished."
