@@ -1,0 +1,39 @@
+[tool.uv.workspace]
+members = ["infrastructure", "services/libs/common", "services/add_item"]
+
+[dependency-groups]
+dev = [
+    "complexipy>=5.2.0",
+    "ruff>=0.15.2",
+    "ty>=0.0.18",
+]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 120
+fix = true
+
+[tool.ruff.lint]
+select = ["ALL"]
+
+# Optional: Ignore rules that tend to create noise in real projects
+ignore = [
+  "D203", # Conflicts with D211; Google style does NOT want a blank line before class docstrings
+  "D213", # Conflicts with D212; Google style wants the summary on the same line as opening quotes
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.per-file-ignores]
+"**/test_*.py" = [
+  "ANN",    # Ignore annotation-enforcement rules in tests (type strictness usually adds noise here)
+  "D",      # Ignore all docstring rules in tests (tests are not public API)
+  "S101",   # Allow use of `assert` in pytest tests (normal and expected)
+  "INP001", # Allow tests to live outside explicit packages (no __init__.py required)
+  "TC002",  # Allow runtime third-party type imports in tests
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

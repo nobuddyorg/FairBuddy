@@ -1,16 +1,20 @@
+"""A component that encapsulates creating an AWS S3 hosted static website."""
+
 import pulumi
 from pulumi import ResourceOptions
 from pulumi_aws import s3
 
 
-# A component that encapsulates creating an AWS S3 hosted static website.
 class AwsS3Website(pulumi.ComponentResource):
+    """A component that encapsulates creating an AWS S3 hosted static website."""
+
     def __init__(
         self,
         name: str,
         files: list[str] | None = None,
         opts: ResourceOptions | None = None,
     ) -> None:
+        """Create an AWS S3 hosted static website."""
         super().__init__("quickstart:index:AwsS3Website", name, {"files": files}, opts)
 
         # Create an AWS resource (S3 Bucket)
@@ -50,6 +54,9 @@ class AwsS3Website(pulumi.ComponentResource):
         )
 
         # Create an S3 Bucket object for each file; note the changes to name/source:
+        if files is None:
+            files = []
+
         for file in files:
             s3.BucketObject(
                 file,

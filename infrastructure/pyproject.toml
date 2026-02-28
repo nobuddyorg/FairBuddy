@@ -5,45 +5,4 @@ requires-python = ">=3.13"
 dependencies = ["pulumi>=3.0.0,<4.0.0", "pulumi-aws>=7.0.0,<8.0.0"]
 
 [dependency-groups]
-dev = ["ruff>=0.15.2"]
-
-[tool.uv.workspace]
-members = ["libs/common", "add_item"]
-
-[tool.ruff]
-target-version = "py313"
-line-length = 120
-fix = true
-
-[tool.ruff.lint]
-select = [
-    "E", # pycodestyle errors (syntax & style issues)
-    "F", # pyflakes (undefined names, unused imports, etc.)
-    "I", # import sorting (replaces isort)
-
-    "B",   # flake8-bugbear (common mistakes and best practices)
-    "UP",  # pyupgrade (modernize to current Python version)
-    "SIM", # flake8-simplify (simplify overly complex logic)
-    "C90", # mccabe complexity checks
-
-    "N",   # pep8-naming (enforce naming conventions)
-    "ANN", # type annotation presence (warns if missing)
-    "PL",  # pylint-inspired design checks (arguments, branches, etc.)
-    "RUF", # Ruff-specific additional rules
-]
-
-# Optional: Ignore rules that tend to create noise in real projects
-ignore = [
-    "PLR2004", # magic values
-    "E501",    # line length (handled by formatter)
-]
-
-[tool.ruff.lint.mccabe]
-max-complexity = 10
-
-[tool.ruff.lint.per-file-ignores]
-"**/test_*.py" = ["ANN"]
-
-[tool.ruff.format]
-quote-style = "double"
-indent-style = "space"
+dev = []
