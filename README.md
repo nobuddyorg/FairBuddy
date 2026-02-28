@@ -19,23 +19,30 @@ prek install
 prek install --hook-type commit-msg
 ```
 
+They can always be run by:
+
+```bash
+prek run --all-files
+```
+
+The same check is done remotely during PullRequest action runs.
+
 ### What Gets Checked
 
 On every commit the following hooks run automatically:
 
-- **Trailing whitespace** — removes trailing spaces
-- **End of file** — ensures files end with a newline
-- **Mixed line endings** — prevents inconsistent LF/CRLF usage
-- **YAML / TOML / JSON / XML validation** — catches syntax errors in config and data files
-- **Merge conflict markers** — prevents committing unresolved conflicts
-- **Case conflicts** — prevents files that differ only by letter case
-- **Executable files with shebangs** — ensures executables define an interpreter
-- **Private key detection** — prevents accidentally committing private keys
-- **Large files** — blocks accidentally committed large files
-- **Protected branches** — prevents commits to restricted branches (if configured)
-- **Ruff lint** — checks Python code and auto-fixes issues
-- **Ruff format** — formats Python code
-- **Commitizen** — validates commit messages follow [Conventional Commits](https://www.conventionalcommits.org/)
+- **Standard Hygiene Tasks** - line endings, whitespaces, ...
+- **Ruff lint** - checks Python code and auto-fixes issues
+- **Ruff format** - formats Python code
+- **Commitizen** - validates commit messages follow [Conventional Commits](https://www.conventionalcommits.org/)
+- **PyProject validation** - by validating the toml file
+- **MD Format** - formats markdown files
+- **MD Linting** - opinionated markdown formatting
+- **typos** - detecting typos in code and fixing them
+- **shellcheck** - checking shell scripts
+- **zizmor** - linting GitHub actions
+- **ty**- Python type checker
+- **complexipy** - Python checker for cognitive complexity
 
 ### Commit Message Format
 
