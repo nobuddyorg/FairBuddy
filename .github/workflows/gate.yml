@@ -29,6 +29,8 @@ jobs:
         uses: j178/prek-action@0bb87d7f00b0c99306c8bcb8b8beba1eb581c037
         with:
           extra_args: "--all-files"
+        env:
+          SKIP: no-commit-to-branch
 
   services-checks:
     runs-on: ubuntu-latest
