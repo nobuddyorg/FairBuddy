@@ -1,11 +1,9 @@
 # Services
 
-The `bom.txt` file controls which service to build, test and deploy.
-
 ## Running a Service Locally
 
 ```bash
-./trigger.sh
+../scripts/service-trigger.sh
 ```
 
 ## Testing a Service Locally
@@ -13,19 +11,11 @@ The `bom.txt` file controls which service to build, test and deploy.
 To run a single test:
 
 ```bash
-./test.sh
+../scripts/service-test.sh
 ```
 
 To run all tests:
 
 ```bash
-./test.sh --all
-```
-
-## Format Code
-
-```bash
-uv sync --dev
-uv run ruff check --fix
-uv run ruff format .
+../scripts/service-test.sh --all
 ```
