@@ -1,55 +1,30 @@
 """AWS Lambda function to add an item to a DynamoDB table."""
 
-from typing import Any, Protocol
-
 import boto3
+from aws_lambda_powertools import Logger
+from aws_lambda_powertools.logging import correlation_paths
+from aws_lambda_powertools.utilities.typing import LambdaContext
 from common.config import load_settings
-from common.logging import get_logger
+from common.local_lambda_context import get_context
 
-logger = get_logger()
-settings = load_settings()
+logger = Logger()
 
 dynamodb = boto3.client("dynamodb")
 
 
-class LambdaContext(Protocol):
-    """Protocol for the AWS Lambda context object."""
-
-    aws_request_id: str
-
-
-def handler(event: dict[str, Any], context: LambdaContext) -> dict[str, object]:
+@logger.inject_lambda_context(correlation_id_path=correlation_paths.LAMBDA_FUNCTION_URL)
+def lambda_handler(event: dict, context: LambdaContext) -> str:
     """Handle an AWS Lambda request to add an item to the DynamoDB table."""
     logger.info("start request_id=%s", getattr(context, "aws_request_id", "-"))
-    logger.info("log_level=%s", settings.log_level)
     logger.info("event=%s", event)
 
-    try:
-        resp = dynamodb.put_item(
-            TableName="fairbuddy_test",
-            Item={
-                "item": {"S": "item#2"},
-                "cost": {"N": "10"},
-            },
-        )
-    except Exception:
-        logger.exception("put_item failed")
-        raise
-    else:
-        logger.info(
-            "put_item ok consumed_capacity=%s",
-            resp.get("ConsumedCapacity"),
-        )
-        return {"ok": True}
+    logger.info("Using table: %s", load_settings().pulumi_outputs.get("table_name"))
+    return "Item added successfully!"
 
 
-def main() -> dict[str, object]:
+def main() -> str:
     """Run the handler locally (not used by AWS Lambda, but can be triggered with trigger.sh)."""
-
-    class _LocalContext:
-        aws_request_id = "local"
-
-    return handler({}, _LocalContext())
+    return lambda_handler({}, get_context())
 
 
 if __name__ == "__main__":
