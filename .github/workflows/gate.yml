@@ -79,4 +79,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
         working-directory: infrastructure
-        run: uv run pytest -m integration tests/
+        run: |
+          pulumi login s3://fairbuddy-pulumi-state
+          uv run pytest -m integration tests/
