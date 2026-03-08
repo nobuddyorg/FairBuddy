@@ -1,12 +1,6 @@
-"""A Pulumi program that creates an AWS S3 hosted static website using a component."""
+"""The pulumi entrypoint. All infrastructure components are imported and used here."""
 
 import pulumi
+from dynamodb import table_name
 
-# Import from our new component module:
-from website import AwsS3Website
-
-# Create an instance of our component with the same files as before:
-website = AwsS3Website("my-website", files=["index.html"])
-
-# And export its autoassigned URL:
-pulumi.export("url", website.url)
+pulumi.export("table_name", table_name)
