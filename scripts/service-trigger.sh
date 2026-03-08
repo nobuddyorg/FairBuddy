@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Creates a json file with the outputs of the Pulumi stack, which can be read by the services to get infrastructure details like table names, API endpoints, etc.
+pushd "$(dirname "${BASH_SOURCE[0]}")/../infrastructure" > /dev/null || exit
+  pulumi stack output --json > ../services/libs/common/src/common/.infra-outputs.json
+popd > /dev/null || exit
+
+
 pushd "$(dirname "${BASH_SOURCE[0]}")/../services" > /dev/null || exit
 
 pkgs=()
