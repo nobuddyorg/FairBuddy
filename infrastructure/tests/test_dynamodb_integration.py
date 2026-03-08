@@ -8,7 +8,7 @@ import pytest
 from pulumi import automation as auto
 
 PROJECT_NAME = "fairbuddy-infra"
-STACK_NAME = "test"
+STACK_NAME = f"test-{uuid.uuid4().hex[:8]}"
 
 
 @pytest.fixture(scope="module")
