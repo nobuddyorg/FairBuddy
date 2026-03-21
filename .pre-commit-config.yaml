@@ -107,7 +107,7 @@ repos:
     hooks:
       - id: opengrep-check
         name: OpenGrep
-        entry: bash -lc 'opengrep --config auto --error --autofix'
+        entry: bash -lc 'opengrep --config p/security-audit --error --autofix'
         language: system
         pass_filenames: false
         stages: [pre-commit]
