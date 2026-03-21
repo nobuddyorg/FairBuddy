@@ -5,3 +5,4 @@
 **/*.pyc
 .complexipy_cache/
 .env
+.secrets
