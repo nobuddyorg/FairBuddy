@@ -40,6 +40,12 @@ for tool in "${tools[@]}"; do
   echo
 done
 
+if ask "Install opengrep static code analysis?"; then
+  curl -fsSL https://raw.githubusercontent.com/opengrep/opengrep/main/install.sh -o /tmp/install.sh
+  bash /tmp/install.sh
+fi
+
+echo
 if ask "Run aws configure now?"; then
   aws configure
 fi
