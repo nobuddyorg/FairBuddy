@@ -62,12 +62,15 @@ jobs:
           files: |
             reports/test-results.xml
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@57e3a136b779b570ffcdbf80b3bdc90e7fab3de2
-        if: always()
+      - name: Coverage Summary
+        uses: irongut/CodeCoverageSummary@51cc3a756ddcd398d447c044c02cb6aa83fdae95
         with:
-          files: reports/coverage.xml
-          fail_ci_if_error: true
+          filename: reports/coverage.xml
+          badge: true
+          format: markdown
+          output: both
+          fail_below_min: true
+          thresholds: '80'
 
   integration-tests:
     runs-on: ubuntu-latest
