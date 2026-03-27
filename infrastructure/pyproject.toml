@@ -6,6 +6,3 @@ dependencies = ["pulumi>=3.0.0,<4.0.0", "pulumi-aws>=7.0.0,<8.0.0"]
 
 [dependency-groups]
 dev = []
-
-[tool.pytest.ini_options]
-markers = ['integration: marks tests as integration']
