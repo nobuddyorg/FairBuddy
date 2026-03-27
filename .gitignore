@@ -5,3 +5,5 @@
 **/*.pyc
 .complexipy_cache/
 .env
+.coverage
+**/reports/
