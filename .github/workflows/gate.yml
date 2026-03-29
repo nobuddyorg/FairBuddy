@@ -34,6 +34,10 @@ jobs:
 
   services-checks:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      checks: write
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
@@ -51,7 +55,33 @@ jobs:
       - name: Run tests
         env:
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-        run: ./scripts/service-test.sh --all
+        run: uv run pytest -m "not integration" --junitxml=reports/test-results.xml --cov=services --cov-report=term-missing --cov-report=xml:reports/coverage.xml --cov-report=html:reports/htmlcov --cov-fail-under=80
+
+
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action/linux@c950f6fb443cb5af20a377fd0dfaa78838901040
+        if: always()
+        with:
+          check_name: "Unit Tests"
+          files: |
+            reports/test-results.xml
+
+      - name: Coverage Summary
+        uses: irongut/CodeCoverageSummary@51cc3a756ddcd398d447c044c02cb6aa83fdae95
+        with:
+          filename: reports/coverage.xml
+          badge: true
+          format: markdown
+          output: both
+          fail_below_min: true
+          thresholds: '80'
+
+      - name: Add Coverage PR Comment
+        uses: marocchino/sticky-pull-request-comment@70d2764d1a7d5d9560b100cbea0077fc8f633987
+        if: github.event_name == 'pull_request'
+        with:
+          recreate: true
+          path: code-coverage-results.md
 
   integration-tests:
     runs-on: ubuntu-latest

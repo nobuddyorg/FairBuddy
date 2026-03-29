@@ -54,3 +54,23 @@ fix: correct DynamoDB table name
 docs: update README with setup instructions
 chore: bump ruff to 0.15.1
 ```
+
+## Unit Testing
+
+Unit tests are run by:
+
+```bash
+uv run pytest -m "not integration"
+```
+
+You can include integration tests by reducing to:
+
+```bash
+uv run pytest
+```
+
+And run it including code coverage with:
+
+```bash
+uv run pytest -m "not integration" --junitxml=reports/test-results.xml --cov=services --cov-report=term-missing --cov-report=xml:reports/coverage.xml --cov-report=html:reports/htmlcov --cov-fail-under=80
+```

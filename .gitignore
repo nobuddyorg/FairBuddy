@@ -5,3 +5,8 @@
 **/*.pyc
 .complexipy_cache/
 .env
+.coverage
+.coverage*
+**/coverage/
+**/reports/
+**/.gremlins_cache/
