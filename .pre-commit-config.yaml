@@ -101,3 +101,13 @@ repos:
         language: system
         pass_filenames: false
         stages: [pre-commit]
+
+  # Custom local hook for security checking.
+  - repo: local
+    hooks:
+      - id: opengrep-check
+        name: OpenGrep
+        entry: bash -lc 'opengrep --config p/security-audit --error --autofix'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
