@@ -43,6 +43,7 @@ On every commit the following hooks run automatically:
 - **zizmor** - linting GitHub actions
 - **ty**- Python type checker
 - **complexipy** - Python checker for cognitive complexity
+- **opengrep** - Static security analysis
 
 ### Commit Message Format
 
