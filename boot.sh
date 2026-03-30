@@ -12,6 +12,7 @@ tools=(
   uv
   prek
   pulumi/tap/pulumi
+  act
 )
 ############
 
