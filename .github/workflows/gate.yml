@@ -40,7 +40,7 @@ jobs:
         run: uv sync --dev
 
       - name: Run Prek (pre-commit)
-        uses: j178/prek-action@79f765515bd648eb4d6bb1b17277b7cb22cb6468
+        uses: j178/prek-action@53276d8b0d10f8b6672aa85b4588c6921d0370cc
         with:
           extra_args: "--all-files"
         env:
