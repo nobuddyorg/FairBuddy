@@ -47,6 +47,11 @@ if ask "Install opengrep static code analysis?"; then
 fi
 
 echo
+if ask "Install pinned Python version with uv?"; then
+  uv python install
+fi
+
+echo
 if ask "Run aws configure now?"; then
   aws configure
 fi
