@@ -37,7 +37,9 @@ jobs:
           enable-cache: true
 
       - name: Install dependencies
-        run: uv sync --dev
+        run: |
+          uv python install
+          uv sync --dev
 
       - name: Run Prek (pre-commit)
         uses: j178/prek-action@53276d8b0d10f8b6672aa85b4588c6921d0370cc
@@ -48,7 +50,6 @@ jobs:
 
   services-checks:
     runs-on: ubuntu-latest
-    environment: ci
     permissions:
       contents: read
       pull-requests: write
@@ -65,11 +66,16 @@ jobs:
           enable-cache: true
 
       - name: Install dependencies
-        run: uv sync --dev
+        run: |
+          uv python install
+          uv sync --dev
 
       - name: Run tests
         env:
-          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          AWS_DEFAULT_REGION: dummy-region
+          AWS_ACCESS_KEY_ID: dummy-access-key-id
+          AWS_SECRET_ACCESS_KEY: dummy-secret-access-key
+          PULUMI_CONFIG_PASSPHRASE: dummy-passphrase
         run: uv run pytest -m "not integration" --junitxml=reports/test-results.xml --cov=services --cov-report=term-missing --cov-report=xml:reports/coverage.xml --cov-report=html:reports/htmlcov --cov-fail-under=80
 
       - name: Publish Test Results
@@ -115,7 +121,9 @@ jobs:
           enable-cache: true
 
       - name: Install dependencies
-        run: uv sync --dev
+        run: |
+          uv python install
+          uv sync --dev
 
       - name: Install Pulumi
         uses: pulumi/actions@8582a9e8cc630786854029b4e09281acd6794b58
