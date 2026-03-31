@@ -8,6 +8,12 @@ on:
 permissions:
   contents: read
 
+env:
+  AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+
 jobs:
   static-analysis:
     runs-on: ubuntu-latest
@@ -67,8 +73,6 @@ jobs:
         run: uv sync --dev
 
       - name: Run tests
-        env:
-          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
         run: uv run pytest -m "not integration" --junitxml=reports/test-results.xml --cov=services --cov-report=term-missing --cov-report=xml:reports/coverage.xml --cov-report=html:reports/htmlcov --cov-fail-under=80
 
 
@@ -120,11 +124,6 @@ jobs:
         uses: pulumi/actions@8582a9e8cc630786854029b4e09281acd6794b58
 
       - name: Run integration tests
-        env:
-          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
         working-directory: infrastructure
         run: |
           pulumi login s3://fairbuddy-pulumi-state
