@@ -5,10 +5,12 @@ members = ["infrastructure", "services/libs/common", "services/add_item"]
 dev = [
   "complexipy>=5.2.0",
   "coverage>=7.13.5",
+  "prek>=0.1",
   "pytest>=9.0.2",
   "pytest-cov>=7.1.0",
   "ruff>=0.15.2",
   "ty>=0.0.18",
+  "certifi",
 ]
 
 [tool.pytest.ini_options]
