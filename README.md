@@ -1,10 +1,29 @@
 # FairBuddy
 
-In order install necessary dependencies, run:
+To set up the development environment, run the bootstrap script.
+
+**Prerequisites**: Python 3 must be installed — [download here](https://python.org/downloads/) if needed.
+
+## Getting Started
+
+### macOS / Linux
 
 ```bash
-./boot.sh
+python3 boot.py
 ```
+
+### Windows
+
+```powershell
+python boot.py
+```
+
+This will automatically:
+
+1. Install [`uv`](https://docs.astral.sh/uv/) (if not already installed)
+1. Download Python 3.13 and create a `.venv` via `uv sync`
+1. Install git hooks via `prek`
+1. Prompt you to install optional tools (AWS CLI, Pulumi, act, opengrep)
 
 ## Pre-commit Hooks
 
@@ -12,17 +31,17 @@ This project uses [prek](https://prek.j178.dev/) to enforce code quality before 
 
 ### Setup
 
-The hooks are installed automatically by `boot.sh`. To install them manually:
+The hooks are installed automatically by `boot.py`. To install them manually:
 
 ```bash
-prek install
-prek install --hook-type commit-msg
+uv run prek install
+uv run prek install --hook-type commit-msg
 ```
 
 They can always be run by:
 
 ```bash
-prek run --all-files
+uv run prek run --all-files
 ```
 
 The same check is done remotely during PullRequest action runs.
