@@ -6,6 +6,19 @@ In order install necessary dependencies, run:
 ./boot.sh
 ```
 
+## Run FairBuddy
+
+Use `./buddy.sh` in CLI to gain access to all features.
+With `./buddy.sh --help` you will get the complete usage overview (auto-generated).
+
+E.g. run:
+
+```bash
+./buddy.sh test unit
+```
+
+for a unit test execution.
+
 ## Pre-commit Hooks
 
 This project uses [prek](https://prek.j178.dev/) to enforce code quality before each commit.
@@ -15,14 +28,14 @@ This project uses [prek](https://prek.j178.dev/) to enforce code quality before 
 The hooks are installed automatically by `boot.sh`. To install them manually:
 
 ```bash
-prek install
-prek install --hook-type commit-msg
+uv run prek install
+uv run prek install --hook-type commit-msg
 ```
 
 They can always be run by:
 
 ```bash
-prek run --all-files
+uv run prek run --all-files
 ```
 
 The same check is done remotely during PullRequest action runs.
@@ -56,29 +69,7 @@ docs: update README with setup instructions
 chore: bump ruff to 0.15.1
 ```
 
-## Unit Testing
-
-Unit tests are run by:
-
-```bash
-uv run pytest -m "not integration"
-```
-
-You can include integration tests by reducing to:
-
-```bash
-uv run pytest
-```
-
-And run it including code coverage with:
-
-```bash
-uv run pytest -m "not integration" --junitxml=reports/test-results.xml --cov=services --cov-report=term-missing --cov-report=xml:reports/coverage.xml --cov-report=html:reports/htmlcov --cov-fail-under=80
-```
-
-Sure! Here’s the Docker/act section rewritten as plain text with proper Markdown formatting that `mdformat` will accept:
-
-### Docker Desktop Installation (for macOS)
+## Docker Desktop Installation (for macOS)
 
 This is required to run GitHub Actions locally with act.
 
@@ -101,7 +92,7 @@ You can install Docker Desktop using their own installer from [https://www.docke
     docker run hello-world
     ```
 
-### Running GitHub Actions Locally (act)
+## Running GitHub Actions Locally (act)
 
 Once Docker Desktop is running:
 
