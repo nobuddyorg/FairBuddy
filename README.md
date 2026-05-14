@@ -38,6 +38,12 @@ They can always be run by:
 uv run prek run --all-files
 ```
 
+or
+
+```bash
+./buddy test precommit
+```
+
 The same check is done remotely during PullRequest action runs.
 
 ### What Gets Checked
@@ -99,7 +105,7 @@ Once Docker Desktop is running:
 - Install act:
 
     ```bash
-    brew install act
+    uv sync
     ```
 
 - Create a `.secrets` file if your workflow uses secrets:
@@ -115,6 +121,12 @@ Once Docker Desktop is running:
 
     ```bash
     act pull_request --secret-file .secrets
+    ```
+
+    or
+
+    ```bash
+    ./buddy.sh test action
     ```
 
 Choose `medium`-Image if asked.

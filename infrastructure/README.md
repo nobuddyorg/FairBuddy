@@ -1,11 +1,6 @@
 # Infrastructure
 
-This project uses **Pulumi** for Infrastructure as Code to provision, manage, and maintain cloud resources programmatically. It includes four convenience scripts:
-
-**/scripts/pulumi-init-backend.sh** initializes the Pulumi backend for state management
-**/scripts/pulumi-deploy.sh** deploys the defined infrastructure to the target environment
-**/scripts/pulumi-destroy.sh** tears down and cleans up the deployed resources
-**/scripts/pulumi-outputs.sh** displays outputs and relevant information from the deployed stack
+This project uses **Pulumi** for Infrastructure as Code to provision, manage, and maintain cloud resources programmatically.
 
 This setup simplifies cloud infrastructure management by automating deployment, updates, and teardown.
 

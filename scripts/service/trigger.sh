@@ -9,7 +9,7 @@ pushd "$(dirname "${BASH_SOURCE[0]}")/../../infrastructure" > /dev/null || exit
 popd > /dev/null || exit
 
 
-pushd "$(dirname "${BASH_SOURCE[0]}")/../services" > /dev/null || exit
+pushd "$(dirname "${BASH_SOURCE[0]}")/../../services" > /dev/null || exit
 
 pkgs=()
 

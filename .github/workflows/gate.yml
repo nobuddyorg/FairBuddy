@@ -21,7 +21,7 @@ jobs:
         run: |
           curl -fsSL https://raw.githubusercontent.com/opengrep/opengrep/main/install.sh -o /tmp/install.sh
           bash /tmp/install.sh
-          /home/runner/.opengrep/cli/latest/opengrep --config auto --error
+          $HOME/.opengrep/cli/latest/opengrep --config auto --error
 
   prek-check:
     runs-on: ubuntu-latest
@@ -80,7 +80,7 @@ jobs:
 
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action/linux@c950f6fb443cb5af20a377fd0dfaa78838901040
-        if: always()
+        if: always() && !env.ACT
         with:
           check_name: "Unit Tests"
           files: |
@@ -94,11 +94,11 @@ jobs:
           format: markdown
           output: both
           fail_below_min: true
-          thresholds: '80'
+          thresholds: "80"
 
       - name: Add Coverage PR Comment
         uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && !env.ACT
         with:
           recreate: true
           path: code-coverage-results.md
