@@ -1,7 +1,7 @@
 # FairBuddy
 
 ![Python](https://img.shields.io/badge/python-3.12%2B-blue?logo=python&logoColor=white)
-![UV](https://img.shields.io/badge/deps-uv-purple)
+![UV](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Onyx-Nostalgia/uv/8b198970a10b3dd9abd284715349abb855019dc2/assets/badge/v0.json)
 ![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)
 ![Ty](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ty/main/assets/badge/v0.json)
 [![CI](https://github.com/nobuddyorg/FairBuddy/actions/workflows/ci.yml/badge.svg)](https://github.com/nobuddyorg/FairBuddy/actions/workflows/ci.yml)
