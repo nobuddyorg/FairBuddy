@@ -89,7 +89,7 @@ jobs:
 
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action/linux@c950f6fb443cb5af20a377fd0dfaa78838901040
-        if: always() && !env.ACT
+        if: ${{ always() && !env.ACT }}
         with:
           check_name: "Unit Tests"
           files: |
@@ -111,10 +111,11 @@ jobs:
           files: reports/coverage.xml
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: nobuddyorg/FairBuddy
+        if: ${{ !env.ACT }}
 
       - name: Add Coverage PR Comment
         uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0
-        if: github.event_name == 'pull_request' && !env.ACT
+        if: ${{ github.event_name == 'pull_request' && !env.ACT }}
         with:
           recreate: true
           path: code-coverage-results.md
