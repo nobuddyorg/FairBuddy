@@ -24,7 +24,7 @@ echo "Bootstrap starting…"
 # Define the steps as a JSON array of objects, each with a question and a command
 steps=(
   "Install Homebrew?|/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
-  "Install/Upgrade homebrew tools?|brew bundle check || brew bundle install"
+  "Install/Upgrade homebrew tools?|brew bundle check --file=.brewfile || brew bundle install --file=.brewfile"
   "Install opengrep static code analysis?|curl -fsSL https://raw.githubusercontent.com/opengrep/opengrep/main/install.sh -o /tmp/install.sh && bash /tmp/install.sh"
   "Install pinned Python version with uv?|uv python install"
   "Install project dependencies?|uv sync"
