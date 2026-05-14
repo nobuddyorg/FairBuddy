@@ -1,5 +1,5 @@
 #!/bin/bash
-# Description: Run integration tests
+# Description: Run unit tests with coverage reporting
 
 pushd "$(dirname "${BASH_SOURCE[0]}")/../../" > /dev/null || exit
 
