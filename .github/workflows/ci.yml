@@ -107,6 +107,7 @@ jobs:
         uses: codecov/codecov-action@57e3a136b779b570ffcdbf80b3bdc90e7fab3de2
         with:
           files: reports/coverage.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Add Coverage PR Comment
         uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0
