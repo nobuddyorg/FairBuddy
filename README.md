@@ -6,6 +6,8 @@ In order install necessary dependencies, run:
 ./boot.sh
 ```
 
+_**Note**: This bootstrap script is designed for Unix-like environments (Linux/macOS) and relies on common tools such as bash and standard CLI utilities. Supporting native Windows (e.g., PowerShell) would introduce additional maintenance overhead and platform-specific complexity. Since this bootstrap is intended for developer use only and not part of the end-user product, Linux/macOS are the primary supported environments. Windows users are encouraged to use WSL2 as a compatible execution environment._
+
 ## Run FairBuddy
 
 Use `./buddy.sh` in CLI to gain access to all features.
