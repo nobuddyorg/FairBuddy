@@ -1,6 +1,6 @@
 # test_local_lambda_context.py
 from aws_lambda_powertools.utilities.typing import LambdaContext
-from common.local_lambda_context import LocalLambdaContext, get_context  # adjust module
+from common.local_lambda_context import LocalLambdaContext, get_context
 
 DEFAULT_MEMORY_LIMIT_MB = 128
 
