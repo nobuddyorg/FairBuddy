@@ -161,6 +161,13 @@ jobs:
           path: frontend/playwright-report/
           retention-days: 30
 
+      - name: Publish Playwright Test Results
+        uses: EnricoMi/publish-unit-test-result-action/linux@c950f6fb443cb5af20a377fd0dfaa78838901040
+        if: always()
+        with:
+          check_name: "Playwright UI Tests"
+          files: ./frontend/results/junit.xml
+
   integration-tests:
     runs-on: ubuntu-latest
 
