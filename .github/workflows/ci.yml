@@ -169,7 +169,7 @@ jobs:
         run: |
           npm run test
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && !env.ACT }}
         with:
           name: playwright-report
           path: frontend/playwright-report/
@@ -177,7 +177,7 @@ jobs:
 
       - name: Publish Playwright Test Results
         uses: EnricoMi/publish-unit-test-result-action/linux@c950f6fb443cb5af20a377fd0dfaa78838901040
-        if: always()
+        if: ${{ always() && !env.ACT }}
         with:
           check_name: "Playwright UI Tests"
           files: ./frontend/results/junit.xml
