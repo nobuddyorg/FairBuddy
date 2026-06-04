@@ -4,14 +4,24 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      all:
+        patterns:
+          - "*"
     cooldown:
       default-days: 7
+
   - package-ecosystem: "pre-commit"
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      all:
+        patterns:
+          - "*"
     cooldown:
       default-days: 7
+
   - package-ecosystem: "uv"
     directory: "/"
     schedule:
