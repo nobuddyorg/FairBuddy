@@ -29,6 +29,7 @@ steps=(
   "Install pinned Python version with uv?|uv python install"
   "Install Python dependencies?|uv sync"
   "Install NodeJS dependencies?|cd frontend && npm install --include=dev && cd .."
+  "Install Browsers for Frontend Testing?|npx playwright install"
   "Run aws configure now?|uv run aws configure"
   "Install pre-commit hooks?|uv run prek install && uv run prek install --hook-type commit-msg"
 )
