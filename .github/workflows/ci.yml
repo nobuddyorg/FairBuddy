@@ -137,6 +137,11 @@ jobs:
       pull-requests: write
       contents: read
 
+    needs:
+      - prek-check
+      - services-checks
+      - static-analysis
+
     defaults:
       run:
         working-directory: frontend
@@ -185,8 +190,7 @@ jobs:
 
     environment: ci
     needs:
-      - prek-check
-      - services-checks
+      - frontend-tests
 
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
