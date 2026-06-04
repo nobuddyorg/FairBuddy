@@ -1,5 +1,5 @@
 #!/bin/bash
-# Description: Local start of the frontend application
+# Description: Build a production ready frontend bundle for deployment.
 
 pushd "$(dirname "${BASH_SOURCE[0]}")/../../frontend" > /dev/null || exit
 
