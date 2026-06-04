@@ -32,6 +32,16 @@ repos:
       - id: ruff-format
         require_serial: true
 
+  # Typescript linter and formatter
+  - repo: local
+    hooks:
+      - id: node-formatter
+        name: Node Formatter
+        entry: bash -lc 'cd frontend && npm run lint && npm run format && cd ..'
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
   # Conventional commit message validation
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v4.16.3
