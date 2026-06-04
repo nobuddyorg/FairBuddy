@@ -132,6 +132,11 @@ jobs:
           path: code-coverage-results.md
 
   frontend-tests:
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: read
+
     defaults:
       run:
         working-directory: frontend
