@@ -27,7 +27,8 @@ steps=(
   "Install/Upgrade homebrew tools?|brew bundle check --file=.brewfile || brew bundle install --file=.brewfile"
   "Install opengrep static code analysis?|curl -fsSL https://raw.githubusercontent.com/opengrep/opengrep/main/install.sh -o /tmp/install.sh && bash /tmp/install.sh"
   "Install pinned Python version with uv?|uv python install"
-  "Install project dependencies?|uv sync"
+  "Install Python dependencies?|uv sync"
+  "Install NodeJS dependencies?|cd frontend && npm install --include=dev && cd .."
   "Run aws configure now?|uv run aws configure"
   "Install pre-commit hooks?|uv run prek install && uv run prek install --hook-type commit-msg"
 )
