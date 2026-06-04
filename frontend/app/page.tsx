@@ -1,6 +1,10 @@
+import Image from "next/image";
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-2">
+      <Image src="/logo.webp" alt="FairBuddy logo" width={60} height={0} />
+
       <h1 className="text-4xl font-bold">FairBuddy</h1>
       <p className="text-gray-500">Coming soon…</p>
     </main>
