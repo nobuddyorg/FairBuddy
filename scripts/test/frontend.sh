@@ -1,5 +1,5 @@
 #!/bin/bash
-# Description: Run unit tests
+# Description: Run Frontend tests
 
 pushd "$(dirname "${BASH_SOURCE[0]}")/../../frontend" > /dev/null || exit
 
