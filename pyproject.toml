@@ -3,15 +3,15 @@ members = ["infrastructure", "services/libs/common", "services/add_item"]
 
 [dependency-groups]
 dev = [
-  "complexipy>=5.5.0",
-  "coverage>=7.13.5",
-  "pytest>=9.0.3",
-  "awscli>=1.45.14",
-  "prek>=0.4.1",
+  "complexipy>=5.6.1",
+  "coverage>=7.14.2",
+  "pytest>=9.1.1",
+  "awscli>=1.45.34",
+  "prek>=0.4.5",
   "pytest-cov>=7.1.0",
-  "ruff>=0.15.14",
-  "ty>=0.0.39",
-  "uv-build>=0.11.16",
+  "ruff>=0.15.18",
+  "ty>=0.0.51",
+  "uv-build>=0.11.23",
 ]
 
 [tool.pytest.ini_options]
