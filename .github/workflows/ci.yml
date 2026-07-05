@@ -149,7 +149,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
         with:
           persist-credentials: false
 
@@ -176,7 +176,7 @@ jobs:
           retention-days: 30
 
       - name: Publish Playwright Test Results
-        uses: EnricoMi/publish-unit-test-result-action/linux@c950f6fb443cb5af20a377fd0dfaa78838901040
+        uses: EnricoMi/publish-unit-test-result-action/linux@d0a4676d0e0b938bc201470d88276b7c74c712b3
         if: ${{ always() && !env.ACT }}
         with:
           check_name: "Playwright UI Tests"
