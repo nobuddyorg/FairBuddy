@@ -1,7 +1,7 @@
 repos:
   # Validate uv.lock file is up to date
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.11.25
+    rev: 0.11.26
     hooks:
       - id: uv-lock
 
@@ -63,7 +63,7 @@ repos:
       - id: mdformat
         language: python
         additional_dependencies:
-          - mdformat-mkdocs==5.1.4
+          - mdformat-mkdocs==5.2.0
           - mdformat-footnote==0.1.3
 
   # Markdown linting with markdownlint-cli
@@ -74,7 +74,7 @@ repos:
 
   # Spell checking with typos
   - repo: https://github.com/crate-ci/typos
-    rev: v1.47.2
+    rev: v1.48.0
     hooks:
       - id: typos
 
