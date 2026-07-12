@@ -35,7 +35,7 @@ jobs:
           persist-credentials: false
 
       - name: Install uv
-        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39
+        uses: astral-sh/setup-uv@d31148d669074a8d0a63714ba94f3201e7020bc3
         with:
           enable-cache: true
 
@@ -56,7 +56,7 @@ jobs:
           npm ci
 
       - name: Run Prek (pre-commit)
-        uses: j178/prek-action@bdca6f102f98e2b4c7029491a53dfd366469e33d
+        uses: j178/prek-action@e98a699c41eb69ab013a45817a0406469a748f8d
         with:
           extra-args: "--all-files"
         env:
@@ -81,7 +81,7 @@ jobs:
           persist-credentials: false
 
       - name: Install uv
-        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39
+        uses: astral-sh/setup-uv@d31148d669074a8d0a63714ba94f3201e7020bc3
         with:
           enable-cache: true
 
@@ -125,7 +125,7 @@ jobs:
         if: ${{ !env.ACT }}
 
       - name: Add Coverage PR Comment
-        uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0
+        uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88
         if: ${{ github.event_name == 'pull_request' && !env.ACT }}
         with:
           recreate: true
@@ -198,7 +198,7 @@ jobs:
           persist-credentials: false
 
       - name: Install uv
-        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39
+        uses: astral-sh/setup-uv@d31148d669074a8d0a63714ba94f3201e7020bc3
         with:
           enable-cache: true
 
