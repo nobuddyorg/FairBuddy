@@ -6,12 +6,12 @@ dev = [
   "complexipy>=6.0.1",
   "coverage>=7.15.0",
   "pytest>=9.1.1",
-  "awscli>=1.45.40",
-  "prek>=0.4.8",
+  "awscli>=1.45.46",
+  "prek>=0.4.9",
   "pytest-cov>=7.1.0",
-  "ruff>=0.15.20",
-  "ty>=0.0.56",
-  "uv-build>=0.11.26",
+  "ruff>=0.15.21",
+  "ty>=0.0.58",
+  "uv-build>=0.11.28",
 ]
 
 [tool.pytest.ini_options]
