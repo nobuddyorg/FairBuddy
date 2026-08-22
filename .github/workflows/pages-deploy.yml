@@ -35,6 +35,25 @@ jobs:
       - run: test -d out && test -f out/index.html
       - run: touch out/.nojekyll
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9
+        with:
+          enable-cache: true
+
+      - name: Generate mutation score badge
+        working-directory: .
+        env:
+          AWS_DEFAULT_REGION: dummy-region
+          AWS_ACCESS_KEY_ID: dummy-access-key-id
+          AWS_SECRET_ACCESS_KEY: dummy-secret-access-key
+          PULUMI_CONFIG_PASSPHRASE: dummy-passphrase
+        run: |
+          uv python install
+          uv sync --dev
+          ./scripts/test/mutation.sh 0
+          mkdir -p frontend/out/badges
+          cp reports/mutation-badge.svg frontend/out/badges/mutation-badge.svg
+
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
         with:
           path: frontend/out

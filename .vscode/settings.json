@@ -20,5 +20,8 @@
         "**/.venv": true,
         "**/.pytest_cache": true,
         "**/uv.lock": true
-    }
+    },
+    "cSpell.words": [
+        "pulumi"
+    ]
 }

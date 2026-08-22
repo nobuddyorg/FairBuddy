@@ -1,7 +1,24 @@
+import dataclasses
 import json
 from unittest.mock import mock_open, patch
 
+import pytest
 from common.config import Settings, _read_pulumi_outputs, load_settings
+
+
+def test_settings_is_immutable():
+    """Settings is frozen, so attribute assignment must raise."""
+    settings = Settings(pulumi_outputs_file="dummy.json")
+
+    with pytest.raises(dataclasses.FrozenInstanceError):
+        settings.pulumi_outputs_file = "other.json"  # ty: ignore[invalid-assignment]  # pyright: ignore[reportAttributeAccessIssue]
+
+
+def test_settings_has_no_dict():
+    """Settings uses slots, so instances must not carry a __dict__."""
+    settings = Settings(pulumi_outputs_file="dummy.json")
+
+    assert not hasattr(settings, "__dict__")
 
 
 def test_read_pulumi_outputs_file_exists():

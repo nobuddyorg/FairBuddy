@@ -12,6 +12,7 @@ dev = [
   "ruff>=0.16.0",
   "ty>=0.0.63",
   "uv-build>=0.11.32",
+  "cosmic-ray>=8.7.0",
 ]
 
 [tool.pytest.ini_options]
