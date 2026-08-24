@@ -3,15 +3,15 @@ members = ["infrastructure", "services/libs/common", "services/add_item"]
 
 [dependency-groups]
 dev = [
-  "complexipy>=6.2.0",
-  "coverage>=7.15.2",
+  "complexipy>=7.0.1",
+  "coverage>=7.15.4",
   "pytest>=9.1.1",
-  "awscli>=1.45.56",
-  "prek>=0.4.11",
+  "awscli>=1.46.0",
+  "prek>=0.4.13",
   "pytest-cov>=7.1.0",
-  "ruff>=0.16.0",
-  "ty>=0.0.63",
-  "uv-build>=0.11.32",
+  "ruff>=0.16.3",
+  "ty>=0.0.72",
+  "uv-build>=0.12.5",
   "cosmic-ray>=8.7.0",
 ]
 
@@ -31,8 +31,9 @@ select = ["ALL"]
 
 # Optional: Ignore rules that tend to create noise in real projects
 ignore = [
-  "D203", # Conflicts with D211; Google style does NOT want a blank line before class docstrings
-  "D213", # Conflicts with D212; Google style wants the summary on the same line as opening quotes
+  "D203",   # Conflicts with D211; Google style does NOT want a blank line before class docstrings
+  "D213",   # Conflicts with D212; Google style wants the summary on the same line as opening quotes
+  "CPY001", # No per-file copyright headers; LICENSE already covers this
 ]
 
 [tool.ruff.lint.mccabe]
