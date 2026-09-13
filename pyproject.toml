@@ -7,11 +7,11 @@ dev = [
   "coverage>=7.16.0",
   "pytest>=9.1.1",
   "awscli>=1.46.1",
-  "prek>=0.5.0",
+  "prek>=0.5.2",
   "pytest-cov>=7.1.0",
-  "ruff>=0.16.5",
-  "ty>=0.0.75",
-  "uv-build>=0.12.7",
+  "ruff>=0.16.6",
+  "ty>=0.0.78",
+  "uv-build>=0.12.10",
 ]
 
 [tool.pytest.ini_options]
