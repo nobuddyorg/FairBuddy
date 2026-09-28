@@ -131,6 +131,58 @@ jobs:
           recreate: true
           path: code-coverage-results.md
 
+  mutation-testing:
+    runs-on: ubuntu-latest
+
+    env:
+      UV_CACHE_DIR: /tmp/.uv-cache-mutation
+
+    needs:
+      - prek-check
+      - services-checks
+      - static-analysis
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: |
+          uv python install
+          uv sync --dev
+
+      - name: Run mutation testing
+        id: mutation
+        continue-on-error: true
+        env:
+          AWS_DEFAULT_REGION: dummy-region
+          AWS_ACCESS_KEY_ID: dummy-access-key-id
+          AWS_SECRET_ACCESS_KEY: dummy-secret-access-key
+          PULUMI_CONFIG_PASSPHRASE: dummy-passphrase
+        run: ./scripts/test/mutation.sh 80
+
+      - name: Add Mutation Testing PR Comment
+        uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88
+        if: ${{ github.event_name == 'pull_request' && !env.ACT }}
+        with:
+          header: mutation-testing
+          recreate: true
+          path: reports/mutation-summary.md
+
+      - name: Fail if mutation score is below threshold
+        if: steps.mutation.outcome == 'failure'
+        run: exit 1
+
   frontend-tests:
     permissions:
       checks: write
@@ -191,6 +243,7 @@ jobs:
     environment: ci
     needs:
       - frontend-tests
+      - mutation-testing
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
@@ -209,9 +262,11 @@ jobs:
 
       - name: Install Pulumi
         uses: pulumi/actions@8e5e406f4007fca908480587cb9893c07090f58d
+        if: ${{ !env.ACT }}
 
       - name: Run integration tests
         working-directory: infrastructure
+        if: ${{ !env.ACT }}
         env:
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

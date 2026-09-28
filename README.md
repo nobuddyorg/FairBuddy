@@ -6,6 +6,8 @@
 ![Ty](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ty/main/assets/badge/v0.json)
 [![CI](https://github.com/nobuddyorg/FairBuddy/actions/workflows/ci.yml/badge.svg)](https://github.com/nobuddyorg/FairBuddy/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/nobuddyorg/FairBuddy/graph/badge.svg?token=YLKGK4Y3YA)](https://codecov.io/gh/nobuddyorg/FairBuddy)
+![Pytest](https://img.shields.io/badge/tested_with-pytest-blue?logo=pytest)
+![Mutation score](https://nobuddyorg.github.io/FairBuddy/badges/mutation-badge.svg)
 ![Complexipy](https://img.shields.io/badge/complexity-complexipy-black)
 ![OpenGrep](https://img.shields.io/badge/security-opengrep-blue)
 ![Zizmor](https://img.shields.io/badge/security-zizmor-blue)
