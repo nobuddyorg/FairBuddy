@@ -1,0 +1,13 @@
+[cosmic-ray]
+module-path = ["services/add_item/src/add_item", "services/libs/common/src/common"]
+timeout = 10.0
+excluded-modules = []
+test-command = "python -m pytest services/add_item/tests services/libs/common/tests"
+
+[cosmic-ray.distributor]
+name = "local"
+
+[cosmic-ray.badge]
+label = "mutation score"
+format = "%.1f%%"
+thresholds = { 50 = "red", 60 = "orange", 80 = "yellow", 100 = "green" }

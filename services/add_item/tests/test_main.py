@@ -3,6 +3,11 @@ from unittest.mock import patch
 import add_item.main as main_module
 
 
+def test_lambda_handler_is_wrapped_by_inject_lambda_context():
+    """@logger.inject_lambda_context must stay applied; functools.wraps exposes it as __wrapped__."""
+    assert hasattr(main_module.lambda_handler, "__wrapped__")
+
+
 @patch("add_item.main.load_settings")
 def test_lambda_handler_returns_success_message(mock_load_settings):
     # given

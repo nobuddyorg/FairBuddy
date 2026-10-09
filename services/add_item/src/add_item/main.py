@@ -27,5 +27,5 @@ def main() -> str:
     return lambda_handler({}, get_context())
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no mutate
     main()
