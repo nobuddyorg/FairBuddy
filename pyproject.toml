@@ -3,15 +3,15 @@ members = ["infrastructure", "services/libs/common", "services/add_item"]
 
 [dependency-groups]
 dev = [
-  "complexipy>=8.1.0",
+  "complexipy>=8.3.0",
   "coverage>=7.17.0",
-  "pytest>=9.1.1",
+  "pytest>=9.2.0",
   "awscli>=1.46.2",
-  "prek>=0.5.7",
+  "prek>=0.5.9",
   "pytest-cov>=7.1.0",
-  "ruff>=0.17.2",
-  "ty>=0.0.91",
-  "uv-build>=0.13.5",
+  "ruff>=0.17.3",
+  "ty>=0.0.95",
+  "uv-build>=0.13.6",
   "cosmic-ray>=8.7.0",
 ]
 
