@@ -99,7 +99,7 @@ jobs:
         run: uv run pytest -m "not integration" --junitxml=reports/test-results.xml --cov=services --cov-report=term-missing --cov-report=xml:reports/coverage.xml --cov-report=html:reports/htmlcov --cov-fail-under=80
 
       - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action/linux@7622c5bf3d112a72ab4fa3951c2aa5723d8ab92d
+        uses: EnricoMi/publish-unit-test-result-action/linux@da5b7be67623cd59bbbd1a0ce4f022050a55605f
         if: ${{ always() && !env.ACT }}
         with:
           check_name: "Unit Tests"
@@ -228,7 +228,7 @@ jobs:
           retention-days: 30
 
       - name: Publish Playwright Test Results
-        uses: EnricoMi/publish-unit-test-result-action/linux@7622c5bf3d112a72ab4fa3951c2aa5723d8ab92d
+        uses: EnricoMi/publish-unit-test-result-action/linux@da5b7be67623cd59bbbd1a0ce4f022050a55605f
         if: ${{ always() && !env.ACT }}
         with:
           check_name: "Playwright UI Tests"
@@ -261,7 +261,7 @@ jobs:
           uv sync --dev
 
       - name: Install Pulumi
-        uses: pulumi/actions@8e5e406f4007fca908480587cb9893c07090f58d
+        uses: pulumi/actions@96c7761824268174e0d2a4e8c7d75671eebd24a7
         if: ${{ !env.ACT }}
 
       - name: Run integration tests
