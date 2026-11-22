@@ -3,7 +3,7 @@ members = ["infrastructure", "services/libs/common", "services/add_item"]
 
 [dependency-groups]
 dev = [
-  "complexipy>=8.3.0",
+  "complexipy>=9.0.0",
   "coverage>=7.17.2",
   "pytest>=9.2.0",
   "awscli>=1.46.3",
